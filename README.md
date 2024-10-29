@@ -1,2 +1,2 @@
-# Central de Usuários
-Api para gestão de Filmes.
+# Gestão de Livros
+Api para gestão de livros.

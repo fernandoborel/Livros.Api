@@ -10,9 +10,4 @@
     <ProjectReference Include="..\Livros.Domain.Core\Livros.Domain.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\Services\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>

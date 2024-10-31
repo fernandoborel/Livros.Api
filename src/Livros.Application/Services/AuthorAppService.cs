@@ -30,5 +30,4 @@ public class AuthorAppService : IAuthorAppService
 
     public void Dispose()
         => _authorDomainService.Dispose();
-
 }

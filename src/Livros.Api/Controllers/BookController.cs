@@ -1,6 +1,5 @@
 ﻿using Livros.Application.Dtos;
 using Livros.Application.Interfaces;
-using Livros.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Livros.Api.Controllers;

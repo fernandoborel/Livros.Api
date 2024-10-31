@@ -10,5 +10,6 @@ public class DtoToEntity : Profile
     {
         CreateMap<CriarAuthorDto, Author>().ReverseMap();
         CreateMap<CriarBookDto, Book>().ReverseMap();
+        CreateMap<CriarUserDto, User>().ReverseMap();
     }
 }

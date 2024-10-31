@@ -76,6 +76,14 @@ public static class Setup
         builder.Services.AddScoped<IBookRepository, BookRepository>();
 
         #endregion
+
+        #region User
+
+        builder.Services.AddScoped<IUserAppService, UserAppService>();
+        builder.Services.AddScoped<IUserDomainService, UserDomainService>();
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+        #endregion
     }
 
     public static void AddEntityFrameworkServices(this WebApplicationBuilder builder)

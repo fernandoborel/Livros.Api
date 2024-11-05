@@ -23,9 +23,16 @@ public class BookAppService : IBookAppService
         _bookDomainService.CriarBook(book);
     }
 
-    public List<Book> ListarLivros()
+    public List<BookResponseDto> ListarLivros()
     {
-        return _bookDomainService.ListarLivros();
+        var books = _bookDomainService.ListarLivros();
+        return books.Select(b => new BookResponseDto
+        {
+            Id = b.Id,
+            Title = b.Title,
+            IsAvailable = b.IsAvailable,
+            AuthorName = b.Author.Name
+        }).ToList();
     }
 
     public void Dispose()

@@ -15,10 +15,12 @@ public class SqlServerContext : DbContext
         modelBuilder.ApplyConfiguration(new BookMap());
         modelBuilder.ApplyConfiguration(new LoanMap());
         modelBuilder.ApplyConfiguration(new UserMap());
+        modelBuilder.ApplyConfiguration(new LoanBookMap());
     }
 
     public virtual DbSet<Author> Authors { get; set; }
     public virtual DbSet<Book> Books { get; set; }
     public virtual DbSet<Loan> Loans { get; set; }
     public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<LoanBook> LoanBooks { get; set; }
 }

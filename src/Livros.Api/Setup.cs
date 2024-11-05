@@ -84,6 +84,14 @@ public static class Setup
         builder.Services.AddScoped<IUserRepository, UserRepository>();
 
         #endregion
+
+        #region Loan
+
+        builder.Services.AddScoped<ILoanAppService, LoanAppService>();
+        builder.Services.AddScoped<ILoanDomainService, LoanDomainService>();
+        builder.Services.AddScoped<ILoanRepository, LoanRepository>();
+
+        #endregion
     }
 
     public static void AddEntityFrameworkServices(this WebApplicationBuilder builder)

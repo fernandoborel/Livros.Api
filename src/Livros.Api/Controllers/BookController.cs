@@ -19,7 +19,7 @@ public class BookController : ControllerBase
     {
         var books = _bookAppService.ListarLivros();
         if (books != null && books.Any())
-            return StatusCode(200, new { message = "Livros(s) encontrado(s)", quantidade = books.Count(), books });
+            return Ok(new { message = "Livros(s) encontrado(s)", quantidade = books.Count, books });
 
         return BadRequest(new { message = "Nenhum livro encontrado." });
     }

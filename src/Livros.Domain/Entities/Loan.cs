@@ -12,5 +12,5 @@ public class Loan
 
     public virtual User User { get; set; } = null!;
 
-    public virtual ICollection<Book> Books { get; set; } = new List<Book>();
+    public virtual ICollection<LoanBook> LoanBooks { get; set; } = new List<LoanBook>();
 }

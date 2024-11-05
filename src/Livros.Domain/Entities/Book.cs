@@ -6,11 +6,11 @@ public class Book
 
     public string Title { get; set; } = null!;
 
-    public int AuthorId { get; set; }
+    public bool IsAvailable { get; set; }
 
-    public bool? IsAvailable { get; set; }
+    public int AuthorId { get; set; }
 
     public virtual Author Author { get; set; } = null!;
 
-    public virtual ICollection<Loan> Loans { get; set; } = new List<Loan>();
+    public virtual ICollection<LoanBook> LoanBooks { get; set; } = new List<LoanBook>();
 }

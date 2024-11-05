@@ -9,5 +9,32 @@ public class LoanRepository : BaseRepository<Loan>, ILoanRepository
     private readonly SqlServerContext _context;
 
     public LoanRepository(SqlServerContext context) : base(context)
-      =>  _context = context;
+    {
+        _context = context;
+    }
+
+    public void CreateLoan(int userId, int bookId)
+    {
+        // Verifica se o livro está disponível
+        var book = _context.Books.FirstOrDefault(b => b.Id == bookId && b.IsAvailable);
+        if (book == null)
+        {
+            throw new InvalidOperationException("O livro não está disponível para empréstimo.");
+        }
+
+        // Cria um novo empréstimo
+        var loan = new Loan
+        {
+            UserId = userId,
+            LoanDate = DateOnly.FromDateTime(DateTime.Now),
+            ReturnDate = null
+        };
+
+        _context.Loans.Add(loan);
+        _context.SaveChanges();
+
+        // Atualiza a disponibilidade do livro
+        book.IsAvailable = false; // Define como não disponível
+        _context.SaveChanges(); // Salva as mudanças
+    }
 }

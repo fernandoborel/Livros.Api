@@ -2,4 +2,7 @@
 
 namespace Livros.Domain.Interfaces.Repositories;
 
-public interface ILoanRepository : IBaseRepository<Loan>{}
+public interface ILoanRepository : IBaseRepository<Loan>
+{
+    void CreateLoan(int userId, int bookId);
+}

@@ -12,26 +12,21 @@ public class LoanMap : IEntityTypeConfiguration<Loan>
 
         builder.ToTable("Loan");
 
-        builder.HasOne(d => d.User).WithMany(p => p.Loans)
+        builder.HasOne(d => d.User)
+            .WithMany(p => p.Loans)
             .HasForeignKey(d => d.UserId)
             .OnDelete(DeleteBehavior.ClientSetNull)
             .HasConstraintName("FK__Loan__UserId__3F466844");
 
-        builder.HasMany(d => d.Books).WithMany(p => p.Loans)
-            .UsingEntity<Dictionary<string, object>>(
-                "LoanBook",
-                r => r.HasOne<Book>().WithMany()
-                    .HasForeignKey("BookId")
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__LoanBook__BookId__4316F928"),
-                l => l.HasOne<Loan>().WithMany()
-                    .HasForeignKey("LoanId")
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__LoanBook__LoanId__4222D4EF"),
-                j =>
-                {
-                    j.HasKey("LoanId", "BookId").HasName("PK__LoanBook__2C84D877A8ABA48D");
-                    j.ToTable("LoanBook");
-                });
+        // Mapeamento da relação muitos-para-muitos
+        builder.HasMany(d => d.LoanBooks)
+            .WithOne(lb => lb.Loan)
+            .HasForeignKey(lb => lb.LoanId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK__LoanBook__LoanId__4222D4EF");
+
+        // Mapeamento da relação entre LoanBook e Book
+        builder.Navigation(l => l.LoanBooks)
+            .UsePropertyAccessMode(PropertyAccessMode.Property);
     }
 }

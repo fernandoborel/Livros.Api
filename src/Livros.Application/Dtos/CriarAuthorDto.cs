@@ -5,5 +5,6 @@ namespace Livros.Application.Dtos;
 public class CriarAuthorDto
 {
     [Required(ErrorMessage = "O campo {0} é obrigatório.")]
-    public string Name { get; set; }
+    [Length(3, 100, ErrorMessage = "O campo {0} deve ter entre {2} e {1} caracteres.")]
+    public string? Name { get; set; }
 }

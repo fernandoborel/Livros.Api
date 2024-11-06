@@ -12,9 +12,7 @@ public class LoanAppService : ILoanAppService
        => _loanDomainService = loanDomainService;
 
     public void CriarLoan(CriarLoanDto criarLoanDto)
-    {
-        _loanDomainService.CriarLoan(criarLoanDto.UserId, criarLoanDto.BookId);
-    }
+      =>  _loanDomainService.CriarLoan(criarLoanDto.UserId, criarLoanDto.BookId);
 
     public List<LoanDto> ListarLoans()
     {

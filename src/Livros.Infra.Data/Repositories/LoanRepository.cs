@@ -27,14 +27,13 @@ public class LoanRepository : BaseRepository<Loan>, ILoanRepository
         {
             UserId = userId,
             LoanDate = DateOnly.FromDateTime(DateTime.Now),
-            ReturnDate = null
+            ReturnDate = DateOnly.FromDateTime(DateTime.Now.AddDays(30))
         };
 
         _context.Loans.Add(loan);
         _context.SaveChanges();
 
-        // Atualiza a disponibilidade do livro
-        book.IsAvailable = false; // Define como não disponível
-        _context.SaveChanges(); // Salva as mudanças
+        book.IsAvailable = false;
+        _context.SaveChanges();
     }
 }
